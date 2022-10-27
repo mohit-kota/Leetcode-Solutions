@@ -11,32 +11,34 @@ calc the dx,dy and set to a map.  find the mapping that has the highest count an
 T: filtering takes O(N^2). combos takes a double for loop of N^2 * N^2 in the worst case. 
 so N^2 + N^2 * N^2 ---> O(N^4)
 S: O(N^2) for arrays space in the worst case of A and B filled with 1s
+
+
+
 */
 
 
 class Solution {
 public:
     int largestOverlap(vector<vector<int>>& img1, vector<vector<int>>& img2) {
-        int n=img1.size();
-        vector<pair<int,int>>vec_a;
-        vector<pair<int,int>>vec_b;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                if(img1[i][j]==1){
-                    vec_a.push_back({i,j});
+        int ans = 0, n = img1.size();
+        for(int i=-n;i<n;i++){
+            //cout<<"i = "<<i<<endl;
+            for(int j = -n;j<n;j++){
+                int cntr = 0;
+                for(int k =0 ;k<n;k++){
+                    for(int l = 0;l<n;l++){
+                        int X = i+k;
+                        int Y = j+l;
+                        if(X<n && X>=0 && Y<n && Y>=0 && img2[X][Y] == 1 && img1[k][l] == 1){
+                            //cout<<"X and Y -> "<<X<<Y<<" i and j -> "<<i<<j<<endl;
+                            cntr++;
+                        }
+                    }
                 }
-                if(img2[i][j]==1){
-                    vec_b.push_back({i,j});
-                }
+                //cout<<"for j = "<<j<<" cntr is  "<<cntr<<endl;
+                ans = max(ans,cntr);
             }
-        }
-        int ans=0;
-        map<pair<int,int>,int>mp;
-        for(auto [i1,j1]:vec_a){
-            for(auto [i2,j2]:vec_b){
-                mp[{i1-i2,j1-j2}]++;
-                ans=max(ans,mp[{i1-i2,j1-j2}]);
-            }
+            cout<<endl;
         }
         return ans;
     }
