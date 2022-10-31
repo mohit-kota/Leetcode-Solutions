@@ -9,17 +9,8 @@ public:
         {
             for(int j=0;j<col;j++)
             {
-                int r = i;
-                int c = j;
-                int val = matrix[r][c];
-                while(r<row and c<col)
-                {
-                    if(matrix[r][c]!=val)
-                    {
-                        return false;
-                    }
-                    r++;
-                    c++;
+                if(i>0 and j>0 and matrix[i-1][j-1]!=matrix[i][j]){
+                    return false;
                 }
             }
         }
