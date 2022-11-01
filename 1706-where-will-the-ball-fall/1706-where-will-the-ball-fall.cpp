@@ -14,6 +14,7 @@ public:
         {
             return dp[i][j];
         }
+        
         int nextcolumn = j + grid[i][j];
         
         if(nextcolumn<0 or  nextcolumn>grid[0].size()-1 or grid[i][j]!=grid[i][nextcolumn])
@@ -33,16 +34,40 @@ public:
         // ans of size col 
         vector<int>ans(col,0);
         
-        vector<vector<int>>dp(row+1,vector<int>(col+1,-2));
+        vector<vector<int>>dp(row+1,vector<int>(col,0));
         // map<pair<int,int>,int>vis;
         
         //doing bfs on each ball
-        for(int i=0;i<col;i++)
-        {
-             ans[i] = dfs(grid,0,i,dp);
-        }
+        // for(int i=0;i<col;i++)
+        // {
+        //      ans[i] = dfs(grid,0,i,dp);
+        // }
         
-        return ans;
+        // tabulation 
+        
+        for(int i=row;i>=0;i--)
+        {
+            for(int j=0;j<col;j++)
+            {
+                if(i==grid.size())
+                {
+                    dp[i][j] = j;
+                    continue;
+                }
+                
+                int nextcolumn = j + grid[i][j];
+        
+                if(nextcolumn<0 or  nextcolumn>grid[0].size()-1 or grid[i][j]!=grid[i][nextcolumn])
+                {
+                    dp[i][j] =  -1;
+                }
+                else{
+                dp[i][j] = dp[i+1][nextcolumn];
+                }
+            }
+        }
+        vector<int>ans1(dp[0].begin(),dp[0].end());
+        return ans1;
         
     }
 };
