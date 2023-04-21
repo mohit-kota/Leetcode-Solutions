@@ -1,5 +1,10 @@
 class Solution {
 public:
+    // Time Complexetiy : O(n)
+    // Space Complexity : O(n)
+    
+    // Undordered_map find() tc is O(1)
+    // if ordered map then O(log(n))
     
     void findsum(vector<int>&answer,vector<int>nums,int target){
         unordered_map<int,int>mp;
