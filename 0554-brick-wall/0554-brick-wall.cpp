@@ -27,6 +27,7 @@ public:
             max_space = max(max_space,it.second);
         }
         
+        // here wall.size() - max_space represent that , we remove no . white space occupied in the column
         return wall.size() - max_space;
         
     }
