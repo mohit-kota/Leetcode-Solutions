@@ -7,6 +7,8 @@ public:
         
         // for n operations num1 = (2^i1 --- ) + n*num2
         // let diff = 2^i1...
+        // if the count is in range of set bits in diff and diff , then it can be returned 
+        
         
         for(int cnt = 1; cnt<60;++cnt)
         {
