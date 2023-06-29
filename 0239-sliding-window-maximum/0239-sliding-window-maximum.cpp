@@ -3,7 +3,7 @@ public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) 
     {
         int n = nums.size();
-        deque<int>dq;
+        deque<int>dq(k);
         int max_index = -1;
         int max_ele = INT_MIN;
         for(int i=0;i<k;i++)
@@ -15,8 +15,9 @@ public:
             }
             
             dq.push_back(i);
+
         }
-        // dq.push_front(max_index);
+        // dq.push_back(max_index);
         vector<int>ans;
         for(int i=k;i<n;i++)
         {
