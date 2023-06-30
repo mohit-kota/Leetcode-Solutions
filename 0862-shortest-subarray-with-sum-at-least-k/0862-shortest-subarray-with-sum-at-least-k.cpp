@@ -49,6 +49,7 @@ public:
                 B[i] += B[i - 1];
             if (B[i] >= K)
                 res = min(res, i + 1);
+             // this while loop is used for getting minimal length till sum>=k
             while (d.size() > 0 && B[i] - B[d.front()] >= K)
             {
                 
@@ -59,6 +60,7 @@ public:
                 }
                  d.pop_front();
             }
+            // this while lop is used for maintaining the queue in increasing order 
             while (d.size() > 0 && B[i] <= B[d.back()])
                 d.pop_back();
             d.push_back(i);
