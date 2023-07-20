@@ -26,7 +26,7 @@ public:
         
         for(int i=1;i<=n;i++)
         {
-            for(int s=1;s<=sum;s++)
+            for(int s=0;s<=sum;s++)
             {
                 if(s<arr[i-1])
                 {
